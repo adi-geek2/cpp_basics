@@ -1,3 +1,6 @@
+#ifndef FILE_HANDLING_HPP
+#define FILE_HANDLING_HPP
+
 #include <fstream>
 #include <iostream>
 
@@ -5,31 +8,16 @@ using namespace std;
 
 class fileHandler{
     public:
-        fileHandler(bool mode){
-            fileName = "test";
-            isRead = mode;
-            if(mode){
-                file.open(fileName, ios::in);
-            }else{
-                file.open(fileName, ios::out);
-            }            
-            if(file.is_open()){
-                isFileOpen = true;
-            }else{
-                isFileOpen = false;
-                cout << "Error:File did not open" << endl;
-            }
-            
-        }
-
-        ~fileHandler(){
-            file.close();
-        }
+        fileHandler(bool mode);
+        fileHandler(bool mode, string fileName);
+        ~fileHandler();
 
         fstream file;
 
     private:
-        string fileName;
+        string mFileName;
         bool isFileOpen;
         bool isRead;
 };
+
+#endif /*FILE_HANDLING_HPP*/

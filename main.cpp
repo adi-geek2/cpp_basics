@@ -18,4 +18,17 @@ int main(){
         getline(inFileHandler->file, line);
         cout << line << endl;
     }
+
+    fileHandler* fileParserHandler = new fileHandler(true, "sample.txt");
+    string parseLine;
+    int population;
+    while(fileParserHandler->file){
+        getline(fileParserHandler->file, parseLine, ':');
+        fileParserHandler->file >>  population;
+        fileParserHandler->file.get();       
+        cout << "--" << parseLine << "--" << population << endl;
+        if(!fileParserHandler->file){
+            break;
+        }
+    }
 }
