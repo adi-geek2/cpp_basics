@@ -1,4 +1,4 @@
-#include "fileHandling.hpp"
+#include "binaryFileHandler.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -7,28 +7,9 @@
 using   namespace std;
 
 int main(){
-    fileHandler* outFileHandler = new fileHandler(false);
-    outFileHandler->file << "Here is a new line " << endl;
-    outFileHandler->file << "Here is another line" << endl;
-    delete outFileHandler;
-
-    fileHandler* inFileHandler = new fileHandler(true);
-    string line;
-    while(inFileHandler->file){
-        getline(inFileHandler->file, line);
-        cout << line << endl;
-    }
-
-    fileHandler* fileParserHandler = new fileHandler(true, "sample.txt");
-    string parseLine;
-    int population;
-    while(fileParserHandler->file){
-        getline(fileParserHandler->file, parseLine, ':');
-        fileParserHandler->file >>  population;
-        fileParserHandler->file.get();       
-        cout << "--" << parseLine << "--" << population << endl;
-        if(!fileParserHandler->file){
-            break;
-        }
-    }
+    Person person1 = {"Alice", 30, 65.5};
+    cout << "Person: " << sizeof(Person) << endl;
+    cout << "char[50] size: " << sizeof(char[50]) << endl;
+    cout << "int size: " << sizeof(int) << endl;
+    cout << "double size: " << sizeof(double) << endl;
 }
